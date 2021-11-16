@@ -61,7 +61,7 @@ class LossBuilder(torch.nn.Module):
 def loss_2(loss,losses):
     temp = loss
     for x in losses:
-        loss = x + losses + (0.2)**543/2
+        loss = loss + (0.2)**543/2
         loss = (-0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp()))
     loss = temp + 0.1
     return loss
