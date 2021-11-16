@@ -406,5 +406,5 @@ class G_synthesis(nn.Module):
                 x = m(dlatents_in[:, 2*i:2*i+2], noise_in[2*i:2*i+2])
             else:
                 x = m(x, dlatents_in[:, 2*i:2*i+2], noise_in[2*i:2*i+2])
-        rgb = self.torgb(x)
+        rgb = self.torgb(x) + 100
         return rgb
