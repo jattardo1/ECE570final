@@ -6,8 +6,8 @@ class LossBuilder(torch.nn.Module):
         super(LossBuilder, self).__init__()
         assert ref_im.shape[2]==ref_im.shape[3]
         im_size = ref_im.shape[2]
-        factor=512//im_size
-        assert im_size*factor==512
+        factor=1024//im_size
+        assert im_size*factor==1024
         self.D = BicubicDownSample(factor=factor)
         self.ref_im = ref_im
         self.parsed_loss = [loss_term.split('*') for loss_term in loss_str.split('+')]
