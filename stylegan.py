@@ -348,7 +348,7 @@ class G_synthesis(nn.Module):
                  randomize_noise=True,
                  nonlinearity='lrelu',      # Activation function: 'relu', 'lrelu'
                  use_wscale=True,         # Enable equalized learning rate?
-                 use_pixel_norm=False,        # Enable pixelwise feature vector normalization?
+                 use_pixel_norm=True,        # Enable pixelwise feature vector normalization?
                  use_instance_norm=True,         # Enable instance normalization?
                  # Data type to use for activations and outputs.
                  dtype=torch.float32,
