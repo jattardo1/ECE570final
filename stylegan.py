@@ -104,9 +104,9 @@ class NoiseLayer(nn.Module):
     def __init__(self, channel):
         super().__init__()
 
-        self.weight = nn.Parameter(torch.zeros(1, channel, 1, 1))
+        self.weight = nn.Parameter(torch.zeros(channel))
 
-    def forward(self, image, noise):
+    def forward(self, image, noise=None):
         return image + self.weight * noise
 
 
