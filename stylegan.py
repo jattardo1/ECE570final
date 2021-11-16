@@ -343,7 +343,7 @@ class G_synthesis(nn.Module):
                  fmap_max=512,
                  use_styles=True,         # Enable style inputs?
                  const_input_layer=True,         # First layer is a learned constant?
-                 use_noise=False,         # Enable noise inputs?
+                 use_noise=True,         # Enable noise inputs?
                  # True = randomize noise inputs every time (non-deterministic), False = read noise inputs from variables.
                  randomize_noise=True,
                  nonlinearity='lrelu',      # Activation function: 'relu', 'lrelu'
