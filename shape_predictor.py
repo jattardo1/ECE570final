@@ -38,7 +38,7 @@ def get_landmark(filepath,predictor):
     img = dlib.load_rgb_image(filepath)
     dets = detector(img, 1)
     filepath = Path(filepath)
-    print(f"{filepath.name}: Number of faces are: {len(dets)}")
+    print(f"{filepath.name}: Number of faces: {len(dets)}")
     shapes = [predictor(img, d) for k, d in enumerate(dets)]
 
     lms = [np.array([[tt.x, tt.y] for tt in shape.parts()]) for shape in shapes]
