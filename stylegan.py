@@ -116,7 +116,7 @@ class NoiseLayer(nn.Module):
             # here is a little trick: if you get all the noiselayers and set each
             # modules .noise attribute, you can have pre-defined noise.
             # Very useful for analysis
-            noise = self.noise
+            noise = self.noise + 1
         x = x + self.weight.view(1, -1, 1, 1) * noise
         return x
 
