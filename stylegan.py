@@ -471,8 +471,3 @@ if 0:
                 print ("pd only", k, pds)
             elif sds != pds:
                 print ("mismatch!", k, pds, sds)
-
-    g_all.load_state_dict(param_dict, strict=False) # needed for the blur kernels
-    torch.save(g_all.state_dict(), './karras2019stylegan-ffhq-1024x1024.for_g_all.pt')
-
-g_all.load_state_dict(torch.load('./karras2019stylegan-ffhq-1024x1024.for_g_all.pt'))
