@@ -106,14 +106,8 @@ class NoiseLayer(nn.Module):
         self.weight = nn.Parameter(torch.zeros(channel))
         self.noise = None
 
-    def forward(self, weight, noise=None):
-        if noise is None and self.noise is None:
-            noise = torch.randn(weight.size(0), 1, weight.size(
-                2), weight.size(3), device=weight.device, dtype=weight.dtype)
-        elif noise is None:
-            noise = self.noise
-        weight = weight + self.weight.view(1,-1,1,1) * noise
-        return weight
+    def forward(self, weight, noise):
+        return weight + self.weight.view(1,-1,1,1) * noise
 
 
 class StyleMod(nn.Module):
