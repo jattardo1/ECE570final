@@ -342,13 +342,13 @@ class G_synthesis(nn.Module):
                  # Maximum number of feature maps in any layer.
                  fmap_max=512,
                  use_styles=True,         # Enable style inputs?
-                 const_input_layer=True,         # First layer is a learned constant?
+                 const_input_layer=False,         # First layer is a learned constant?
                  use_noise=True,         # Enable noise inputs?
                  # True = randomize noise inputs every time (non-deterministic), False = read noise inputs from variables.
                  randomize_noise=True,
                  nonlinearity='lrelu',      # Activation function: 'relu', 'lrelu'
                  use_wscale=True,         # Enable equalized learning rate?
-                 use_pixel_norm=True,        # Enable pixelwise feature vector normalization?
+                 use_pixel_norm=False,        # Enable pixelwise feature vector normalization?
                  use_instance_norm=True,         # Enable instance normalization?
                  # Data type to use for activations and outputs.
                  dtype=torch.float32,
