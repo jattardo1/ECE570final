@@ -112,7 +112,7 @@ class NoiseLayer(nn.Module):
                 2), weight.size(3), device=weight.device, dtype=weight.dtype)
         elif noise is None:
             noise = self.noise
-        weight = weight + self.weight * noise
+        weight = weight + self.weight.view(1,-1,1,1) * noise
         return weight
 
 
