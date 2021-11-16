@@ -103,11 +103,17 @@ class MyConv2d(nn.Module):
 class NoiseLayer(nn.Module):
     def __init__(self, channel):
         super().__init__()
-
         self.weight = nn.Parameter(torch.zeros(channel))
+        self.noise = None
 
-    def forward(self, image, noise=None):
-        return image + self.weight * noise
+    def forward(self, weight, noise=None):
+        if noise is None and self.noise is None:
+            noise = torch.randn(weight.size(0), 1, weight.size(
+                2), weight.size(3), device=weight.device, dtype=weight.dtype)
+        elif noise is None:
+            noise = self.noise
+        weight = weight + self.weight * noise
+        return weight
 
 
 class StyleMod(nn.Module):
