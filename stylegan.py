@@ -476,25 +476,3 @@ if 0:
     torch.save(g_all.state_dict(), './karras2019stylegan-ffhq-1024x1024.for_g_all.pt')
 
 g_all.load_state_dict(torch.load('./karras2019stylegan-ffhq-1024x1024.for_g_all.pt'))
-
-%matplotlib inline
-from matplotlib import pyplot
-import torchvision
-device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
-g_all.eval()
-g_all.to(device)
-
-torch.manual_seed(20)
-nb_rows = 2
-nb_cols = 5
-nb_samples = nb_rows * nb_cols
-latents = torch.randn(nb_samples, 512, device=device)
-with torch.no_grad():
-    imgs = g_all(latents)
-    imgs = (imgs.clamp(-1, 1) + 1) / 2.0 # normalization to 0..1 range
-imgs = imgs.cpu()
-
-imgs = torchvision.utils.make_grid(imgs, nrow=nb_cols)
-
-pyplot.figure(figsize=(15, 6))
-pyplot.imshow(imgs.permute(1, 2, 0).detach().numpy())
