@@ -57,16 +57,9 @@ class LossBuilder(torch.nn.Module):
         return loss, losses
 
     
-def vae_loss(output, mu, log_var, images):
-  """
-  :param output: this the output of your neural network
-  :param mu: this is the mu from the latent space
-  :param log_var: this is the log_var from the latent space
-  :param images: this is the original sets of images
-  """
-  ###########################   <YOUR CODE>  ############################
-  BCE = F.binary_cross_entropy(output, images, reduction='sum')
-  KL = (-0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())) / batch_size_train * 784
-  tot = BCE+KL
-  return tot, BCE, KL
+def loss_2(loss,losses):
+  Binary_input = F.binary_cross_entropy(output, images, reduction='sum')
+  K_input = (-0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())) / batch_size_train * 784
+  tot = Binary_input+K_input
+  return tot
 
