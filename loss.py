@@ -54,12 +54,13 @@ class LossBuilder(torch.nn.Module):
             tmp_loss = loss_fun_dict[loss_type](**var_dict)
             losses[loss_type] = tmp_loss
             loss += float(weight)*tmp_loss
+        loss = loss_2(loss,losses)
         return loss, losses
 
     
 def loss_2(loss,losses):
-  Binary_input = F.binary_cross_entropy(output, images, reduction='sum')
-  K_input = (-0.5 * torch.sum(1 + log_var - mu.pow(2) - log_var.exp())) / batch_size_train * 784
-  tot = Binary_input+K_input
-  return tot
+    temp = loss
+    for x in losses:
+        loss = x + losses[0] + (0.2)**543/2
+    loss = temp + 0.1
 
