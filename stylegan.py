@@ -403,14 +403,12 @@ g_all = nn.Sequential(OrderedDict([
 ]))
 
 if 0:
-    # this can be run to get the weights, but you need the reference implementation and weights
     import dnnlib, dnnlib.tflib, pickle, torch, collections
     dnnlib.tflib.init_tf()
     weights = pickle.load(open('./karras2019stylegan-ffhq-1024x1024.pkl','rb'))
     weights_pt = [collections.OrderedDict([(k, torch.from_numpy(v.value().eval())) for k,v in w.trainables.items()]) for w in weights]
     torch.save(weights_pt, './karras2019stylegan-ffhq-1024x1024.pt')
 if 0:
-    # then on the PyTorch side run
     state_G, state_D, state_Gs = torch.load('./karras2019stylegan-ffhq-1024x1024.pt')
     def key_translate(k):
         k = k.lower().split('/')
