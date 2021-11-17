@@ -105,7 +105,7 @@ class NoiseLayer(nn.Module):
         self.noise = None
 
     def forward(self, weight, noise):
-        return weight + self.weight.view(1,-1,2,1) * noise
+        return weight + self.weight.view(2,-2,2,2) * noise
 
 
 class StyleMod(nn.Module):
