@@ -80,7 +80,7 @@ class MyConv2d(nn.Module):
             w = w[:, :, 1:, 1:] + w[:, :, :-1, 1:] + \
                 w[:, :, 1:, :-1] + w[:, :, :-1, :-1]
             x = F.conv_transpose2d(
-                x, w, stride=1, padding=int((w.size(-1)-1)//2))
+                x, w, stride=2, padding=int((w.size(-1)-1)//2))
             have_convolution = True
         elif self.upscale is not None:
             x = self.upscale(x)
