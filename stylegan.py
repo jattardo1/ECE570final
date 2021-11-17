@@ -80,7 +80,7 @@ class MyConv2d(nn.Module):
             w = w[:, :, 1:, 1:] + w[:, :, :-1, 1:] + \
                 w[:, :, 1:, :-1] + w[:, :, :-1, :-1]
             x = F.conv_transpose2d(
-                x, w, stride=3, padding=int((w.size(-1)-1)//2))
+                x, w, stride=2, padding=int((w.size(-1)-1)//2))
             have_convolution = True
         elif self.upscale is not None:
             x = self.upscale(x)
@@ -133,7 +133,7 @@ class PixelNormLayer(nn.Module):
 
 
 class BlurLayer(nn.Module):
-    def __init__(self, kernel=[1, 2, 1], normalize=True, flip=False, stride=1):
+    def __init__(self, kernel=[1, 2, 1], normalize=True, flip=False, stride=2):
         super(BlurLayer, self).__init__()
         kernel = [1, 2, 1]
         kernel = torch.tensor(kernel, dtype=torch.float32)
