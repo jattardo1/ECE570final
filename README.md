@@ -7,3 +7,5 @@ Use python3 compare.py to run once picture links are uploaded.
 
 CODE:
 The code files that are labeled ECE70_Demo.ipynb and compare.py are the files writen by me and the rest are from the original GitHub (https://github.com/adamian98/pulse). The stylegan.py was altered a little by just changing the weights and the strides. 
+
+StyleGAN was trained using Flickr-Face_HQ dataset
